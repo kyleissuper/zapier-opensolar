@@ -5,11 +5,15 @@ const perform = async (z, bundle) => {
 };
 
 const performUnsubscribe = async (z, bundle) => {
-  const fields = {
-    Project: ['project.*'],
-    Event: ['event.*'],
-    Contact: ['contact.*'],
-  }[bundle.inputData.object_type];
+  const fields = [];
+
+  for (const object_type of bundle.inputData.object_types) {
+    fields.push({
+      Project: 'project.*',
+      Event: 'event.*',
+      Contact: 'contact.*',
+    }[object_type]);
+  }
 
   const options = {
     url: `${BASE_URL}/api/orgs/${bundle.authData.orgId}/webhooks/${bundle.subscribeData.id}`,
