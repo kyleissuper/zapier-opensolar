@@ -6,6 +6,7 @@ const findSystemSearch = require('./searches/find_system.js');
 const findSystemDetailsSearch = require('./searches/find_system_details.js');
 const findRoleSearch = require('./searches/find_role.js');
 const findCostingSearch = require('./searches/find_costing.js');
+const findPaymentOptionsSearch = require('./searches/find_payment_options.js');
 const contact = require('./creates/contact.js');
 const project = require('./creates/project.js');
 
@@ -28,6 +29,7 @@ module.exports = {
     [findSystemSearch.key]: findSystemSearch,
     [findSystemDetailsSearch.key]: findSystemDetailsSearch,
     [findCostingSearch.key]: findCostingSearch,
+    [findPaymentOptionsSearch.key]: findPaymentOptionsSearch,
   },
   triggers: { 
     [newWebhookTrigger.key]: newWebhookTrigger,
