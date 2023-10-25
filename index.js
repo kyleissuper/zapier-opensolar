@@ -15,7 +15,7 @@ const project = require('./creates/project.js');
 const addHeader = (request, z, bundle) => {
   request.headers['Content-Type'] = 'application/json';
   const authToken = bundle.authData.sessionKey;
-  request.headers['Authorization'] = authToken ? `Bearer ${authToken}`: undefined;
+  if (authToken) request.headers['Authorization'] = `Bearer ${authToken}`;
   return request;
 };
 

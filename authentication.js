@@ -2,7 +2,7 @@ const { BASE_URL } = require('./constants');
 
 const getHeaders = (authToken) => ({
   'Content-Type': 'application/json',
-  'Authorization': authToken ? `Bearer ${authToken}` : undefined,
+  'Authorization': `Bearer ${authToken}`,
 });
 
 const test = async (z, bundle) => {
@@ -18,7 +18,6 @@ const renewToken = async (z, bundle) => {
   const response = await z.request({
     url: `${BASE_URL}/api-token-auth/`,
     method: 'POST',
-    headers: getHeaders(),
     body: {
       username: bundle.authData.username,
       password: bundle.authData.password,
